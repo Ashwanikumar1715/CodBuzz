@@ -1,95 +1,62 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-
+"use client"
+import { useState,useEffect } from "react";
+import { useRef } from "react";
+function FadeInSection(props) {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef();
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => setVisible(entry.isIntersecting));
+    });
+    observer.observe(domRef.current);
+  }, []);
+  return (
+    <div
+      className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+      ref={domRef}
+    >
+      {props.children}
+    </div>
+  );
+}
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+    <FadeInSection>
+   <div className='main_div'>
+   <br /><br /><br />
+
+    <h1>Take Your Career to the Next Level with CodeBuzz</h1><br />
+    <h3>Join Our Internship Program</h3><br /><br />
+     <button>Apply</button>
+   </div>
+   </FadeInSection>
+  <FadeInSection>
+  <div className="who_we_are_main">
+  <div className='who_we_are'>
+    <h1>Who We Are</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Minima debitis error, asperiores, aliquam saepe officia eum
+      consequatur labore porro illum accusamus. Dolor commodi 
+      blanditiis laboriosam nulla eius iure incidunt vel quasi 
+      sapiente! Quisquam tempore, non recusandae accusantium 
+      necessitatibus nihil quo quae dolorem voluptatibus quibusdam 
+      ipsum quis, officia, a nesciunt culpa accusamus eum et maiores
+       dolorum nobis! Eius quaerat aperiam labore quae itaque nostrum
+        repudiandae perferendis quo veritatis, explicabo voluptatem 
+        delectus earum voluptatibus ducimus. Tempore officia, accusamus
+         nulla quae tempora laboriosam assumenda delectus magnam ducimus
+          cupiditate doloribus labore veniam error ipsa atque quod maiores,
+           eos dolor! Enim ipsa accusantium nemo cupiditate?</p>
         </div>
-      </div>
+        </div>
+  </FadeInSection>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+  <FadeInSection>
+    <div>
+      <h1>Service for the Client</h1>
+    </div>
+  </FadeInSection>
+</div>
   )
 }
